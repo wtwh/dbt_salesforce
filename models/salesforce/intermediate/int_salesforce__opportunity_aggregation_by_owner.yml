@@ -1,0 +1,179 @@
+version: 2
+models:
+  - name: int_salesforce__opportunity_aggregation_by_owner
+    columns:
+      - name: owner_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: manager_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: b_manager_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: b_owner_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: bookings_amount_closed_this_month
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: bookings_amount_closed_this_quarter
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total_number_bookings
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total_bookings_amount
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: bookings_count_closed_this_month
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: bookings_count_closed_this_quarter
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: avg_bookings_amount
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: largest_booking
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: avg_days_to_close
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: l_manager_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: l_owner_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: lost_amount_this_month
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: lost_amount_this_quarter
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total_number_lost
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total_lost_amount
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: lost_count_this_month
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: lost_count_this_quarter
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: p_manager_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: p_owner_id
+        description: ""
+        meta:
+          dimension:
+            type: string
+      - name: pipeline_created_amount_this_month
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: pipeline_created_amount_this_quarter
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: pipeline_created_forecast_amount_this_month
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: pipeline_created_forecast_amount_this_quarter
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: pipeline_count_created_this_month
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: pipeline_count_created_this_quarter
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total_number_pipeline
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total_pipeline_amount
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: total_pipeline_forecast_amount
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: avg_pipeline_opp_amount
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: largest_deal_in_pipeline
+        description: ""
+        meta:
+          dimension:
+            type: number
+      - name: avg_days_open
+        description: ""
+        meta:
+          dimension:
+            type: number
