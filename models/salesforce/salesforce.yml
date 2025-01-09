@@ -1129,74 +1129,131 @@ models:
         meta:
           dimension:
             type: string
+
+
   - name: salesforce__daily_activity
     description: >-
       Each record represents a daily summary of the number of sales activities,
       for example tasks and opportunities closed.
     columns:
       - name: date_day
-        description: "{{ doc(\"date_day\") }}"
+        description: '{{ doc("date_day") }}'
         tests:
           - unique
           - not_null
         meta:
           dimension:
             type: timestamp
+
       - name: leads_created
-        description: "{{ doc(\"leads_created\") }}"
+        description: '{{ doc("leads_created") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_leads_created:
+              type: sum
+              label: Total Leads Created
+
       - name: leads_converted
-        description: "{{ doc(\"leads_converted\") }}"
+        description: '{{ doc("leads_converted") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_leads_converted:
+              type: sum
+              label: Total Leads Converted
+
       - name: tasks_completed
-        description: "{{ doc(\"tasks_completed\") }}"
+        description: '{{ doc("tasks_completed") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_tasks_completed:
+              type: sum
+              label: Total Tasks Completed
+
       - name: events_completed
-        description: "{{ doc(\"events_completed\") }}"
+        description: '{{ doc("events_completed") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_events_completed:
+              type: sum
+              label: Total Events Completed
+
       - name: opportunities_created
-        description: "{{ doc(\"opportunities_created\") }}"
+        description: '{{ doc("opportunities_created") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_opportunities_created:
+              type: sum
+              label: Total Opportunities Created
+
       - name: opportunities_won
-        description: "{{ doc(\"opportunities_won\") }}"
+        description: '{{ doc("opportunities_won") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_opportunities_won:
+              type: sum
+              label: Total Opportunities Won
+
       - name: opportunities_lost
-        description: "{{ doc(\"opportunities_lost\") }}"
+        description: '{{ doc("opportunities_lost") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_opportunities_lost:
+              type: sum
+              label: Total Opportunities Lost
+
       - name: opportunities_created_amount
-        description: "{{ doc(\"opportunities_created_amount\") }}"
+        description: '{{ doc("opportunities_created_amount") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_opportunities_created_amount:
+              type: sum
+              label: Total Opportunities Created Amount
+
       - name: opportunities_won_amount
-        description: "{{ doc(\"opportunities_won_amount\") }}"
+        description: '{{ doc("opportunities_won_amount") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_opportunities_won_amount:
+              type: sum
+              label: Total Opportunities Won Amount
+
       - name: opportunities_lost_amount
-        description: "{{ doc(\"opportunities_lost_amount\") }}"
+        description: '{{ doc("opportunities_lost_amount") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_opportunities_lost_amount:
+              type: sum
+              label: Total Opportunities Lost Amount
+
       - name: pipeline_amount
-        description: "{{ doc(\"pipeline_amount\") }}"
+        description: '{{ doc("pipeline_amount") }}'
         meta:
           dimension:
             type: number
+          metrics:
+            total_pipeline_amount:
+              type: sum
+              label: Total Pipeline Amount
 
 
   - name: salesforce__opportunity_line_item_enhanced
