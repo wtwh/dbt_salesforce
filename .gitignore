@@ -7,3 +7,4 @@ keyfile.json
 develop/
 dbt_packages/
 env/
+profiles.yml
