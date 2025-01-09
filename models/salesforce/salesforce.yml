@@ -409,6 +409,12 @@ models:
         meta:
           dimension:
             type: string
+
+          metrics:
+            count_distinct_opportunities:
+              type: count_distinct
+              label: Count Distinct Opportunities
+
       - name: _fivetran_synced
         description: The time at which fivetran last synced this record
         meta:
@@ -436,6 +442,12 @@ models:
         meta:
           dimension:
             type: number
+
+          metrics:
+            total_sales_amount:
+              type: sum
+              label: Total Sales Amount
+
       - name: campaign_id
         description: >-
           ID of a related Campaign. This field is defined only for those
@@ -596,6 +608,12 @@ models:
         meta:
           dimension:
             type: string
+
+          metrics:
+            count_distinct_advertisers:
+              type: count_distinct
+              label: Count Distinct Advertisers
+
       - name: account_source
         description: >-
           The source of the account record. For example, Advertisement,
@@ -1270,6 +1288,12 @@ models:
         meta:
           dimension:
             type: string
+
+          metrics:
+            count_opportunities_items:
+              type: count_distinct
+              label: Count Distinct Opportunities Items
+
       - name: opportunity_line_item_name
         description: "{{ doc(\"opportunity_line_item_name\") }}"
         meta:
@@ -1340,21 +1364,45 @@ models:
         meta:
           dimension:
             type: number
+
+          metrics:
+            sum_list_price:
+              type: sum
+              label: Sum List Price
+
       - name: quantity
         description: "{{ doc(\"quantity\") }}"
         meta:
           dimension:
             type: number
+
+          metrics:
+            sum_quantity:
+              type: sum
+              label: Sum Quantity
+
       - name: unit_price
         description: "{{ doc(\"unit_price\") }}"
         meta:
           dimension:
             type: number
+
+          metrics:
+            sum_unit_price:
+              type: sum
+              label: Sum Unit Price
+
       - name: total_price
         description: "{{ doc(\"total_price\") }}"
         meta:
           dimension:
             type: number
+
+          metrics:
+            sum_total_price:
+              type: sum
+              label: Sum Total Price
+
       - name: has_quantity_schedule
         description: "{{ doc(\"has_quantity_schedule\") }}"
         meta:
