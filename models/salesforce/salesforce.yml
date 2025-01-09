@@ -1,553 +1,1343 @@
 version: 2
-
 models:
-
   - name: salesforce__manager_performance
-    description: Each record represents a manager, enriched with data about their team's pipeline, bookings, loses, and win percentages.
+    description: >-
+      Each record represents a manager, enriched with data about their team's
+      pipeline, bookings, loses, and win percentages.
     columns:
       - name: manager_id
         description: The user id of the manager.
         tests:
           - unique
           - not_null
+        meta:
+          dimension:
+            type: string
       - name: bookings_amount_closed_this_month
-        description: '{{ doc("bookings_amount_closed_this_month") }}'
+        description: "{{ doc(\"bookings_amount_closed_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_amount_closed_this_quarter
-        description: '{{ doc("bookings_amount_closed_this_quarter") }}'
+        description: "{{ doc(\"bookings_amount_closed_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_count_closed_this_month
-        description: '{{ doc("bookings_count_closed_this_month") }}'
+        description: "{{ doc(\"bookings_count_closed_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_count_closed_this_quarter
-        description: '{{ doc("bookings_count_closed_this_quarter") }}'
+        description: "{{ doc(\"bookings_count_closed_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: largest_booking
-        description: '{{ doc("largest_booking") }}'
+        description: "{{ doc(\"largest_booking\") }}"
+        meta:
+          dimension:
+            type: number
       - name: largest_deal_in_pipeline
-        description: '{{ doc("largest_deal_in_pipeline") }}'
+        description: "{{ doc(\"largest_deal_in_pipeline\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_amount_this_month
-        description: '{{ doc("lost_amount_this_month") }}'
+        description: "{{ doc(\"lost_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_amount_this_quarter
-        description: '{{ doc("lost_amount_this_quarter") }}'
+        description: "{{ doc(\"lost_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_count_this_month
-        description: '{{ doc("lost_count_this_month") }}'
+        description: "{{ doc(\"lost_count_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_count_this_quarter
-        description: '{{ doc("lost_count_this_quarter") }}'
+        description: "{{ doc(\"lost_count_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: manager_city
         description: The city location of the opportunity owner's manager.
+        meta:
+          dimension:
+            type: string
       - name: manager_name
         description: The name of the opportunity owner's manager.
+        meta:
+          dimension:
+            type: string
       - name: manager_position
         description: The position role of the opportunity owner's manager.
+        meta:
+          dimension:
+            type: string
       - name: manager_state
         description: The state location of the opportunity owner's manager.
+        meta:
+          dimension:
+            type: string
       - name: number_of_direct_reports
         description: The number of opportunity owners who report to this manager.
+        meta:
+          dimension:
+            type: number
       - name: pipeline_count_created_this_month
-        description: '{{ doc("pipeline_count_created_this_month") }}'
+        description: "{{ doc(\"pipeline_count_created_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_count_created_this_quarter
-        description: '{{ doc("pipeline_count_created_this_quarter") }}'
+        description: "{{ doc(\"pipeline_count_created_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_amount_this_month
-        description: '{{ doc("pipeline_created_amount_this_month") }}'
+        description: "{{ doc(\"pipeline_created_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_amount_this_quarter
-        description: '{{ doc("pipeline_created_amount_this_quarter") }}'
+        description: "{{ doc(\"pipeline_created_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_forecast_amount_this_month
-        description: '{{ doc("pipeline_created_forecast_amount_this_month") }}'
+        description: "{{ doc(\"pipeline_created_forecast_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_forecast_amount_this_quarter
-        description: '{{ doc("pipeline_created_forecast_amount_this_quarter") }}'
+        description: "{{ doc(\"pipeline_created_forecast_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_bookings_amount
-        description: '{{ doc("total_bookings_amount") }}'
+        description: "{{ doc(\"total_bookings_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_lost_amount
-        description: '{{ doc("total_lost_amount") }}'
+        description: "{{ doc(\"total_lost_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_bookings
-        description: '{{ doc("total_number_bookings") }}'
+        description: "{{ doc(\"total_number_bookings\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_lost
-        description: '{{ doc("total_number_lost") }}'
+        description: "{{ doc(\"total_number_lost\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_pipeline
-        description: '{{ doc("total_number_pipeline") }}'
+        description: "{{ doc(\"total_number_pipeline\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_pipeline_amount
-        description: '{{ doc("total_pipeline_amount") }}'
+        description: "{{ doc(\"total_pipeline_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_pipeline_forecast_amount
-        description: '{{ doc("total_pipeline_forecast_amount") }}'
+        description: "{{ doc(\"total_pipeline_forecast_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_win_percent
-        description: '{{ doc("total_win_percent") }}'
+        description: "{{ doc(\"total_win_percent\") }}"
+        meta:
+          dimension:
+            type: number
       - name: win_percent_this_month
-        description: '{{ doc("win_percent_this_month") }}'
+        description: "{{ doc(\"win_percent_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: win_percent_this_quarter
-        description: '{{ doc("win_percent_this_quarter") }}'  
-
-
+        description: "{{ doc(\"win_percent_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
   - name: salesforce__owner_performance
-    description: Each record represents an individual member of the sales team, enriched with data about their pipeline, bookings, loses, and win percentages.
+    description: >-
+      Each record represents an individual member of the sales team, enriched
+      with data about their pipeline, bookings, loses, and win percentages.
     columns:
       - name: owner_id
-        description: '{{ doc("owner_id") }}'
+        description: "{{ doc(\"owner_id\") }}"
         tests:
           - unique
           - not_null
+        meta:
+          dimension:
+            type: string
       - name: avg_bookings_amount
-        description: '{{ doc("avg_bookings_amount") }}'
+        description: "{{ doc(\"avg_bookings_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: avg_days_open
-        description: '{{ doc("avg_days_open") }}'
+        description: "{{ doc(\"avg_days_open\") }}"
+        meta:
+          dimension:
+            type: number
       - name: avg_days_to_close
-        description: '{{ doc("avg_days_to_close") }}'
+        description: "{{ doc(\"avg_days_to_close\") }}"
+        meta:
+          dimension:
+            type: number
       - name: avg_pipeline_opp_amount
-        description: '{{ doc("avg_pipeline_opp_amount") }}'
+        description: "{{ doc(\"avg_pipeline_opp_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: b_manager_id
         description: Manager ID of the booking_by_owner CTE.  Helper field.
+        meta:
+          dimension:
+            type: string
       - name: b_owner_id
         description: Owner ID of the booking_by_owner CTE.  Helper field.
+        meta:
+          dimension:
+            type: string
       - name: bookings_amount_closed_this_month
-        description: '{{ doc("bookings_amount_closed_this_month") }}'
+        description: "{{ doc(\"bookings_amount_closed_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_amount_closed_this_quarter
-        description: '{{ doc("bookings_amount_closed_this_quarter") }}'
+        description: "{{ doc(\"bookings_amount_closed_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_count_closed_this_month
-        description: '{{ doc("bookings_count_closed_this_month") }}'
+        description: "{{ doc(\"bookings_count_closed_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_count_closed_this_quarter
-        description: '{{ doc("bookings_count_closed_this_quarter") }}'
+        description: "{{ doc(\"bookings_count_closed_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: l_manager_id
         description: Manager ID of the lost_by_owner CTE.  Helper field.
+        meta:
+          dimension:
+            type: string
       - name: l_owner_id
         description: Owner ID of the lost_by_owner CTE.  Helper field.
+        meta:
+          dimension:
+            type: string
       - name: largest_booking
-        description: '{{ doc("largest_booking") }}'
+        description: "{{ doc(\"largest_booking\") }}"
+        meta:
+          dimension:
+            type: number
       - name: largest_deal_in_pipeline
-        description: '{{ doc("largest_deal_in_pipeline") }}'
+        description: "{{ doc(\"largest_deal_in_pipeline\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_amount_this_month
-        description: '{{ doc("lost_amount_this_month") }}'
+        description: "{{ doc(\"lost_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_amount_this_quarter
-        description: '{{ doc("lost_amount_this_quarter") }}'
+        description: "{{ doc(\"lost_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_count_this_month
-        description: '{{ doc("lost_count_this_month") }}'
+        description: "{{ doc(\"lost_count_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_count_this_quarter
-        description: '{{ doc("lost_count_this_quarter") }}'
+        description: "{{ doc(\"lost_count_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: manager_id
         description: Manager ID associated with opportunities.
+        meta:
+          dimension:
+            type: string
       - name: owner_city
         description: The city associated with the owner.
+        meta:
+          dimension:
+            type: string
       - name: owner_name
         description: The first and last name of the owner.
+        meta:
+          dimension:
+            type: string
       - name: owner_state
         description: The state associated with the owner.
+        meta:
+          dimension:
+            type: string
       - name: p_manager_id
         description: Manager ID of the pipeline_by_owner CTE.  Helper field.
+        meta:
+          dimension:
+            type: string
       - name: p_owner_id
         description: Owner ID of the pipeline_by_owner CTE.  Helper field.
+        meta:
+          dimension:
+            type: string
       - name: pipeline_count_created_this_month
-        description: '{{ doc("pipeline_count_created_this_month") }}'
+        description: "{{ doc(\"pipeline_count_created_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_count_created_this_quarter
-        description: '{{ doc("pipeline_count_created_this_quarter") }}'
+        description: "{{ doc(\"pipeline_count_created_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_amount_this_month
-        description: '{{ doc("pipeline_created_amount_this_month") }}'
+        description: "{{ doc(\"pipeline_created_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_amount_this_quarter
-        description: '{{ doc("pipeline_created_amount_this_quarter") }}'
+        description: "{{ doc(\"pipeline_created_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_forecast_amount_this_month
-        description: '{{ doc("pipeline_created_forecast_amount_this_month") }}'
+        description: "{{ doc(\"pipeline_created_forecast_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_forecast_amount_this_quarter
-        description: '{{ doc("pipeline_created_forecast_amount_this_quarter") }}'
+        description: "{{ doc(\"pipeline_created_forecast_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_bookings_amount
-        description: '{{ doc("total_bookings_amount") }}'
+        description: "{{ doc(\"total_bookings_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_lost_amount
-        description: '{{ doc("total_lost_amount") }}'
+        description: "{{ doc(\"total_lost_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_bookings
-        description: '{{ doc("total_number_bookings") }}'
+        description: "{{ doc(\"total_number_bookings\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_lost
-        description: '{{ doc("total_number_lost") }}'
+        description: "{{ doc(\"total_number_lost\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_pipeline
-        description: '{{ doc("total_number_pipeline") }}'
+        description: "{{ doc(\"total_number_pipeline\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_pipeline_amount
-        description: '{{ doc("total_pipeline_amount") }}'
+        description: "{{ doc(\"total_pipeline_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_pipeline_forecast_amount
-        description: '{{ doc("total_pipeline_forecast_amount") }}'
+        description: "{{ doc(\"total_pipeline_forecast_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_win_percent
-        description: '{{ doc("total_win_percent") }}'
+        description: "{{ doc(\"total_win_percent\") }}"
+        meta:
+          dimension:
+            type: number
       - name: win_percent_this_month
-        description: '{{ doc("win_percent_this_month") }}'
+        description: "{{ doc(\"win_percent_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: win_percent_this_quarter
-        description: '{{ doc("win_percent_this_quarter") }}'
-    
-
+        description: "{{ doc(\"win_percent_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
   - name: salesforce__opportunity_enhanced
     description: >
-      This table both cleans and enhances your opportunities source table with information about
-      the associate account and opportunity owner.
+      This table both cleans and enhances your opportunities source table with
+      information about the associate account and opportunity owner.
     columns:
       - name: opportunity_id
         description: The unique, system-generated ID assigned during creation.
-        tests: 
+        tests:
           - not_null
           - unique
-      - name: _fivetran_synced 
-        description: The time at which fivetran last synced this record 
+        meta:
+          dimension:
+            type: string
+      - name: _fivetran_synced
+        description: The time at which fivetran last synced this record
+        meta:
+          dimension:
+            type: timestamp
       - name: account_number
         description: Number of the account associated with this opportunity.
+        meta:
+          dimension:
+            type: string
       - name: account_id
         description: ID of the account associated with this opportunity.
+        meta:
+          dimension:
+            type: string
       - name: account_type
         description: Type of account, for example, Customer, Competitor, or Partner.
+        meta:
+          dimension:
+            type: string
       - name: amount
-        description: Estimated total sale amount. For opportunities with products, the amount is the sum of the related products.
+        description: >-
+          Estimated total sale amount. For opportunities with products, the
+          amount is the sum of the related products.
+        meta:
+          dimension:
+            type: number
       - name: campaign_id
-        description: ID of a related Campaign. This field is defined only for those organizations that have the campaign feature Campaigns enabled.
+        description: >-
+          ID of a related Campaign. This field is defined only for those
+          organizations that have the campaign feature Campaigns enabled.
+        meta:
+          dimension:
+            type: string
       - name: close_date
         description: Required. Date when the opportunity is expected to close.
+        meta:
+          dimension:
+            type: timestamp
       - name: created_date
         description: Date when the opportunity is was created.
+        meta:
+          dimension:
+            type: timestamp
       - name: opportunity_description
         description: Text description of the opportunity.
+        meta:
+          dimension:
+            type: string
       - name: expected_revenue
-        description: Read-only field that is equal to the product of the opportunity Amount field and the Probability.
+        description: >-
+          Read-only field that is equal to the product of the opportunity Amount
+          field and the Probability.
+        meta:
+          dimension:
+            type: number
       - name: fiscal
-        description: If fiscal years are not enabled, the name of the fiscal quarter or period in which the opportunity CloseDate falls.
+        description: >-
+          If fiscal years are not enabled, the name of the fiscal quarter or
+          period in which the opportunity CloseDate falls.
+        meta:
+          dimension:
+            type: string
       - name: fiscal_quarter
         description: Represents the fiscal quarter. Valid values are 1, 2, 3, or 4.
+        meta:
+          dimension:
+            type: number
       - name: fiscal_year
         description: Represents the fiscal year, for example, 2006.
+        meta:
+          dimension:
+            type: number
       - name: forecast_category_name
         description: The name of the forecast category.
+        meta:
+          dimension:
+            type: string
       - name: has_open_activity
-        description: Indicates whether an opportunity has an open event or task (true) or not (false).
+        description: >-
+          Indicates whether an opportunity has an open event or task (true) or
+          not (false).
+        meta:
+          dimension:
+            type: boolean
       - name: has_opportunity_line_item
-        description: Read-only field that indicates whether the opportunity has associated line items. A value of true means that Opportunity line items have been created for the opportunity.
+        description: >-
+          Read-only field that indicates whether the opportunity has associated
+          line items. A value of true means that Opportunity line items have
+          been created for the opportunity.
+        meta:
+          dimension:
+            type: boolean
       - name: has_overdue_task
-        description: Indicates whether an opportunity has an overdue task (true) or not (false).
+        description: >-
+          Indicates whether an opportunity has an overdue task (true) or not
+          (false).
+        meta:
+          dimension:
+            type: boolean
       - name: is_closed
         description: True, if Stage Name Label is Closed.
+        meta:
+          dimension:
+            type: boolean
       - name: is_deleted
-        description: Indicates whether the object has been moved to the Recycle Bin (true) or not (false).
+        description: >-
+          Indicates whether the object has been moved to the Recycle Bin (true)
+          or not (false).
+        meta:
+          dimension:
+            type: boolean
       - name: is_won
         description: True, if Stage Name Label is Won.
+        meta:
+          dimension:
+            type: boolean
       - name: last_activity_date
-        description: Value is one of the following, whichever is the most recent:Due date of the most recent event logged against the record or Due date of the most recently closed task associated with the record.
+        description: >-
+          Value is one of the following, whichever is the most recent:Due date
+          of the most recent event logged against the record or Due date of the
+          most recently closed task associated with the record.
+        meta:
+          dimension:
+            type: timestamp
       - name: last_referenced_date
-        description: The timestamp when the current user last accessed this record, a record related to this record, or a list view.
+        description: >-
+          The timestamp when the current user last accessed this record, a
+          record related to this record, or a list view.
+        meta:
+          dimension:
+            type: timestamp
       - name: last_viewed_date
-        description: The timestamp when the current user last viewed this record or list view. If this value is null, the user might have only accessed this record or list view (LastReferencedDate) but not viewed it.
+        description: >-
+          The timestamp when the current user last viewed this record or list
+          view. If this value is null, the user might have only accessed this
+          record or list view (LastReferencedDate) but not viewed it.
+        meta:
+          dimension:
+            type: timestamp
       - name: lead_source
         description: Source of this opportunity, such as Advertisement or Trade Show.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_name
         description: Required. A name for this opportunity.
+        meta:
+          dimension:
+            type: string
       - name: next_step
         description: Description of next task in closing opportunity.
+        meta:
+          dimension:
+            type: string
       - name: probability
         description: Percentage of estimated confidence in closing the opportunity.
+        meta:
+          dimension:
+            type: number
       - name: record_type_id
         description: ID of the record type assigned to this object.
+        meta:
+          dimension:
+            type: string
       - name: stage_name
-        description: Required. Current stage of this record. The StageName field controls several other fields on an opportunity.
+        description: >-
+          Required. Current stage of this record. The StageName field controls
+          several other fields on an opportunity.
+        meta:
+          dimension:
+            type: string
       - name: synced_quote_id
         description: The ID of the Quote that syncs with the opportunity.
+        meta:
+          dimension:
+            type: string
       - name: type
         description: Type of opportunity. For example, Existing Business or New Business.
+        meta:
+          dimension:
+            type: string
       - name: account_name
         description: Name of the account.
+        meta:
+          dimension:
+            type: string
       - name: account_source
-        description: The source of the account record. For example, Advertisement, Data.com, or Trade Show.
+        description: >-
+          The source of the account record. For example, Advertisement,
+          Data.com, or Trade Show.
+        meta:
+          dimension:
+            type: string
       - name: closed_amount_this_month
         description: The opportunity amount, if closed this month.
+        meta:
+          dimension:
+            type: number
       - name: closed_amount_this_quarter
         description: The opportunity amount, if closed this quarter.
+        meta:
+          dimension:
+            type: number
       - name: closed_count_this_month
         description: The opportunity count, if closed this month.
+        meta:
+          dimension:
+            type: number
       - name: closed_count_this_quarter
         description: The opportunity count, if closed this quarter.
+        meta:
+          dimension:
+            type: number
       - name: created_amount_this_month
         description: The opportunity amount, if created this month.
+        meta:
+          dimension:
+            type: number
       - name: created_amount_this_quarter
         description: The opportunity amount, if created this quarter.
+        meta:
+          dimension:
+            type: number
       - name: created_count_this_month
         description: The opportunity count, if created this month.
+        meta:
+          dimension:
+            type: number
       - name: created_count_this_quarter
         description: The opportunity count, if created this quarter.
+        meta:
+          dimension:
+            type: number
       - name: days_since_created
-        description: The difference in days between the current day and the day the opportunity was created.
+        description: >-
+          The difference in days between the current day and the day the
+          opportunity was created.
+        meta:
+          dimension:
+            type: number
       - name: days_to_close
-        description: The difference in days between the close day and the day the opportunity was created.
+        description: >-
+          The difference in days between the close day and the day the
+          opportunity was created.
+        meta:
+          dimension:
+            type: number
       - name: forecast_category
-        description: The category of the state of the opportunity. Default values are 'pipeline','forecast','bestcase','closed', and 'omited'
+        description: >-
+          The category of the state of the opportunity. Default values are
+          'pipeline','forecast','bestcase','closed', and 'omited'
+        meta:
+          dimension:
+            type: string
       - name: industry
         description: An industry associated with this account.
+        meta:
+          dimension:
+            type: string
       - name: is_closed_this_month
-        description: Boolean field, indicating whether the closed month is equal to the current month.
+        description: >-
+          Boolean field, indicating whether the closed month is equal to the
+          current month.
+        meta:
+          dimension:
+            type: boolean
       - name: is_closed_this_quarter
-        description: Boolean field, indicating whether the closed quarter is equal to the current quarter.
+        description: >-
+          Boolean field, indicating whether the closed quarter is equal to the
+          current quarter.
+        meta:
+          dimension:
+            type: boolean
       - name: is_created_this_month
-        description: Boolean field, indicating whether the created date is greater than or equal to the first day of this month.
+        description: >-
+          Boolean field, indicating whether the created date is greater than or
+          equal to the first day of this month.
+        meta:
+          dimension:
+            type: boolean
       - name: is_created_this_quarter
-        description: Boolean field, indicating whether the created date is greater than or equal to the first day of this quarter.
+        description: >-
+          Boolean field, indicating whether the created date is greater than or
+          equal to the first day of this quarter.
+        meta:
+          dimension:
+            type: boolean
       - name: number_of_employees
-        description: Number of employees working at the company represented by this account.
+        description: >-
+          Number of employees working at the company represented by this
+          account.
+        meta:
+          dimension:
+            type: number
       - name: opportunity_account_id
         description: The id of the account associated with this opportunity.
       - name: opportunity_manager_city
         description: The city associated with the owner's manager.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_manager_id
         description: The Id of the user who manages this owner.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_manager_name
         description: The name of the opportunity owner's manager.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_manager_state
         description: The state associated with the owner's manager.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_city
         description: The city associated with the owner.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_id
         description: ID of the User who has been assigned to work this opportunity.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_name
         description: The first and last name of the owner.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_state
         description: The state associated with the owner.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_role_id
         description: The ID associated with the owner's user role.
+        meta:
+          dimension:
+            type: string
       - name: owner_id
-        description: '{{ doc("owner_id") }}'
+        description: "{{ doc(\"owner_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: status
         description: Whether the opportunity is won, lost, in the pipeline, or other.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_position
         description: Name of the position of the opportunity owner.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_developer_name
         description: The name of the object of the opportunity owner.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_parent_role_id
         description: The ID of the parent role of the opportunity owner.
+        meta:
+          dimension:
+            type: string
       - name: opportunity_owner_rollup_description
         description: Description of the forecast rollup of the opportunity owner..
-
+        meta:
+          dimension:
+            type: string
   - name: salesforce__sales_snapshot
     description: >
-      This snapshot provides monthly and quarterly metrics that help you understand how your opportunities
-      are performing. Metrics around bookings, the current pipeline and loses are included.
+      This snapshot provides monthly and quarterly metrics that help you
+      understand how your opportunities are performing. Metrics around bookings,
+      the current pipeline and loses are included.
     columns:
       - name: avg_bookings_amount
-        description: '{{ doc("avg_bookings_amount") }}'
+        description: "{{ doc(\"avg_bookings_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: avg_days_open
-        description: '{{ doc("avg_days_open") }}'
+        description: "{{ doc(\"avg_days_open\") }}"
+        meta:
+          dimension:
+            type: number
       - name: avg_days_to_close
-        description: '{{ doc("avg_days_to_close") }}'
+        description: "{{ doc(\"avg_days_to_close\") }}"
+        meta:
+          dimension:
+            type: number
       - name: avg_pipeline_opp_amount
-        description: '{{ doc("avg_pipeline_opp_amount") }}'
+        description: "{{ doc(\"avg_pipeline_opp_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_amount_closed_this_month
-        description: '{{ doc("bookings_amount_closed_this_month") }}'
+        description: "{{ doc(\"bookings_amount_closed_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_amount_closed_this_quarter
-        description: '{{ doc("bookings_amount_closed_this_quarter") }}'
+        description: "{{ doc(\"bookings_amount_closed_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_count_closed_this_month
-        description: '{{ doc("bookings_count_closed_this_month") }}'
+        description: "{{ doc(\"bookings_count_closed_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: bookings_count_closed_this_quarter
-        description: '{{ doc("bookings_count_closed_this_quarter") }}'
+        description: "{{ doc(\"bookings_count_closed_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: largest_booking
-        description: '{{ doc("largest_booking") }}'
+        description: "{{ doc(\"largest_booking\") }}"
+        meta:
+          dimension:
+            type: number
       - name: largest_deal_in_pipeline
-        description: '{{ doc("largest_deal_in_pipeline") }}'
+        description: "{{ doc(\"largest_deal_in_pipeline\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_amount_this_month
-        description: '{{ doc("lost_amount_this_month") }}'
+        description: "{{ doc(\"lost_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_amount_this_quarter
-        description: '{{ doc("lost_amount_this_quarter") }}'
+        description: "{{ doc(\"lost_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_count_this_month
-        description: '{{ doc("lost_count_this_month") }}'
+        description: "{{ doc(\"lost_count_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: lost_count_this_quarter
-        description: '{{ doc("lost_count_this_quarter") }}'
+        description: "{{ doc(\"lost_count_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_count_created_this_month
-        description: '{{ doc("pipeline_count_created_this_month") }}'
+        description: "{{ doc(\"pipeline_count_created_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_count_created_this_quarter
-        description: '{{ doc("pipeline_count_created_this_quarter") }}'
+        description: "{{ doc(\"pipeline_count_created_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_amount_this_month
-        description: '{{ doc("pipeline_created_amount_this_month") }}'
+        description: "{{ doc(\"pipeline_created_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_amount_this_quarter
-        description: '{{ doc("pipeline_created_amount_this_quarter") }}'
+        description: "{{ doc(\"pipeline_created_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_forecast_amount_this_month
-        description: '{{ doc("pipeline_created_forecast_amount_this_month") }}'
+        description: "{{ doc(\"pipeline_created_forecast_amount_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_created_forecast_amount_this_quarter
-        description: '{{ doc("pipeline_created_forecast_amount_this_quarter") }}'
+        description: "{{ doc(\"pipeline_created_forecast_amount_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_bookings_amount
-        description: '{{ doc("total_bookings_amount") }}'
+        description: "{{ doc(\"total_bookings_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_lost_amount
-        description: '{{ doc("total_lost_amount") }}'
+        description: "{{ doc(\"total_lost_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_bookings
-        description: '{{ doc("total_number_bookings") }}'
+        description: "{{ doc(\"total_number_bookings\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_lost
-        description: '{{ doc("total_number_lost") }}'
+        description: "{{ doc(\"total_number_lost\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_number_pipeline
-        description: '{{ doc("total_number_pipeline") }}'
+        description: "{{ doc(\"total_number_pipeline\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_pipeline_amount
-        description: '{{ doc("total_pipeline_amount") }}'
+        description: "{{ doc(\"total_pipeline_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_pipeline_forecast_amount
-        description: '{{ doc("total_pipeline_forecast_amount") }}'
+        description: "{{ doc(\"total_pipeline_forecast_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_win_percent
-        description: '{{ doc("total_win_percent") }}'
+        description: "{{ doc(\"total_win_percent\") }}"
+        meta:
+          dimension:
+            type: number
       - name: win_percent_this_month
-        description: '{{ doc("win_percent_this_month") }}'
+        description: "{{ doc(\"win_percent_this_month\") }}"
+        meta:
+          dimension:
+            type: number
       - name: win_percent_this_quarter
-        description: '{{ doc("win_percent_this_quarter") }}'
-
+        description: "{{ doc(\"win_percent_this_quarter\") }}"
+        meta:
+          dimension:
+            type: number
   - name: salesforce__contact_enhanced
-    description: Each record represents a contact with additional account and owner information.
+    description: >-
+      Each record represents a contact with additional account and owner
+      information.
     columns:
       - name: contact_id
-        description: '{{ doc("contact_id") }}'
+        description: "{{ doc(\"contact_id\") }}"
         tests:
           - unique
           - not_null
+        meta:
+          dimension:
+            type: string
       - name: contact_name
-        description:  '{{ doc("contact_name") }}'
+        description: "{{ doc(\"contact_name\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_id
-        description: '{{ doc("account_id") }}'
+        description: "{{ doc(\"account_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: department
-        description: '{{ doc("department") }}'
+        description: "{{ doc(\"department\") }}"
+        meta:
+          dimension:
+            type: string
       - name: contact_description
-        description: '{{ doc("contact_description") }}'
+        description: "{{ doc(\"contact_description\") }}"
+        meta:
+          dimension:
+            type: string
       - name: email
-        description: '{{ doc("email") }}'
+        description: "{{ doc(\"email\") }}"
+        meta:
+          dimension:
+            type: string
       - name: individual_id
-        description: '{{ doc("individual_id") }}'
+        description: "{{ doc(\"individual_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: contact_is_deleted
-        description: '{{ doc("contact_is_deleted") }}'
+        description: "{{ doc(\"contact_is_deleted\") }}"
+        meta:
+          dimension:
+            type: boolean
       - name: last_activity_date
-        description: '{{ doc("last_activity_date") }}'
+        description: "{{ doc(\"last_activity_date\") }}"
+        meta:
+          dimension:
+            type: timestamp
       - name: lead_source
-        description: '{{ doc("lead_source") }}'
+        description: "{{ doc(\"lead_source\") }}"
+        meta:
+          dimension:
+            type: string
       - name: mailing_city
-        description: '{{ doc("mailing_city") }}'
+        description: "{{ doc(\"mailing_city\") }}"
+        meta:
+          dimension:
+            type: string
       - name: mailing_country
-        description: '{{ doc("mailing_country") }}'
+        description: "{{ doc(\"mailing_country\") }}"
+        meta:
+          dimension:
+            type: string
       - name: mailing_country_code
-        description: '{{ doc("mailing_country_code") }}'
+        description: "{{ doc(\"mailing_country_code\") }}"
+        meta:
+          dimension:
+            type: string
       - name: mailing_postal_code
-        description: '{{ doc("mailing_postal_code") }}'
+        description: "{{ doc(\"mailing_postal_code\") }}"
+        meta:
+          dimension:
+            type: string
       - name: mailing_state
-        description: '{{ doc("mailing_state") }}'
+        description: "{{ doc(\"mailing_state\") }}"
+        meta:
+          dimension:
+            type: string
       - name: mailing_state_code
-        description: '{{ doc("mailing_state_code") }}'
+        description: "{{ doc(\"mailing_state_code\") }}"
+        meta:
+          dimension:
+            type: string
       - name: mailing_street
-        description: '{{ doc("mailing_street") }}'
+        description: "{{ doc(\"mailing_street\") }}"
+        meta:
+          dimension:
+            type: string
       - name: master_record_id
-        description: '{{ doc("master_record_id") }}'
+        description: "{{ doc(\"master_record_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: mobile_phone
-        description: '{{ doc("mobile_phone") }}'
+        description: "{{ doc(\"mobile_phone\") }}"
+        meta:
+          dimension:
+            type: string
       - name: contact_owner_id
-        description: '{{ doc("contact_owner_id") }}'
+        description: "{{ doc(\"contact_owner_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: phone
-        description: '{{ doc("phone") }}'
+        description: "{{ doc(\"phone\") }}"
+        meta:
+          dimension:
+            type: string
       - name: reports_to_id
-        description: '{{ doc("reports_to_id") }}'
+        description: "{{ doc(\"reports_to_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: contact_owner_name
-        description: '{{ doc("contact_owner_name") }}'
+        description: "{{ doc(\"contact_owner_name\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_name
-        description: '{{ doc("account_name") }}'
+        description: "{{ doc(\"account_name\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_number
-        description: '{{ doc("account_number") }}'
+        description: "{{ doc(\"account_number\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_source
-        description: '{{ doc("account_source") }}'
+        description: "{{ doc(\"account_source\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_annual_revenue
-        description: '{{ doc("account_annual_revenue") }}'
+        description: "{{ doc(\"account_annual_revenue\") }}"
+        meta:
+          dimension:
+            type: number
       - name: account_description
-        description: '{{ doc("account_description") }}'
+        description: "{{ doc(\"account_description\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_industry
-        description: '{{ doc("account_industry") }}'
+        description: "{{ doc(\"account_industry\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_is_deleted
-        description: '{{ doc("account_is_deleted") }}'
+        description: "{{ doc(\"account_is_deleted\") }}"
+        meta:
+          dimension:
+            type: boolean
       - name: account_number_of_employees
-        description: '{{ doc("account_number_of_employees") }}'
+        description: "{{ doc(\"account_number_of_employees\") }}"
+        meta:
+          dimension:
+            type: number
       - name: account_owner_id
-        description: '{{ doc("account_owner_id") }}'
+        description: "{{ doc(\"account_owner_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_parent_id
-        description: '{{ doc("account_parent_id") }}'
+        description: "{{ doc(\"account_parent_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_rating
-        description: '{{ doc("account_rating") }}'
+        description: "{{ doc(\"account_rating\") }}"
+        meta:
+          dimension:
+            type: string
       - name: account_type
-        description: '{{ doc("account_type") }}'
-
+        description: "{{ doc(\"account_type\") }}"
+        meta:
+          dimension:
+            type: string
   - name: salesforce__daily_activity
-    description: Each record represents a daily summary of the number of sales activities, for example tasks and opportunities closed.
+    description: >-
+      Each record represents a daily summary of the number of sales activities,
+      for example tasks and opportunities closed.
     columns:
       - name: date_day
-        description: '{{ doc("date_day") }}'
+        description: "{{ doc(\"date_day\") }}"
         tests:
           - unique
           - not_null
+        meta:
+          dimension:
+            type: timestamp
       - name: leads_created
-        description: '{{ doc("leads_created") }}'
+        description: "{{ doc(\"leads_created\") }}"
+        meta:
+          dimension:
+            type: number
       - name: leads_converted
-        description: '{{ doc("leads_converted") }}'
+        description: "{{ doc(\"leads_converted\") }}"
+        meta:
+          dimension:
+            type: number
       - name: tasks_completed
-        description: '{{ doc("tasks_completed") }}'
+        description: "{{ doc(\"tasks_completed\") }}"
+        meta:
+          dimension:
+            type: number
       - name: events_completed
-        description: '{{ doc("events_completed") }}'
+        description: "{{ doc(\"events_completed\") }}"
+        meta:
+          dimension:
+            type: number
       - name: opportunities_created
-        description: '{{ doc("opportunities_created") }}'
+        description: "{{ doc(\"opportunities_created\") }}"
+        meta:
+          dimension:
+            type: number
       - name: opportunities_won
-        description: '{{ doc("opportunities_won") }}'
+        description: "{{ doc(\"opportunities_won\") }}"
+        meta:
+          dimension:
+            type: number
       - name: opportunities_lost
-        description: '{{ doc("opportunities_lost") }}'
+        description: "{{ doc(\"opportunities_lost\") }}"
+        meta:
+          dimension:
+            type: number
       - name: opportunities_created_amount
-        description: '{{ doc("opportunities_created_amount") }}'
+        description: "{{ doc(\"opportunities_created_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: opportunities_won_amount
-        description: '{{ doc("opportunities_won_amount") }}'
+        description: "{{ doc(\"opportunities_won_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: opportunities_lost_amount
-        description: '{{ doc("opportunities_lost_amount") }}'
+        description: "{{ doc(\"opportunities_lost_amount\") }}"
+        meta:
+          dimension:
+            type: number
       - name: pipeline_amount
-        description: '{{ doc("pipeline_amount") }}'
-
+        description: "{{ doc(\"pipeline_amount\") }}"
+        meta:
+          dimension:
+            type: number
   - name: salesforce__opportunity_line_item_enhanced
-    description: Each record represents a line item belonging to a certain opportunity, with additional product details.
+    description: >-
+      Each record represents a line item belonging to a certain opportunity,
+      with additional product details.
     columns:
       - name: opportunity_line_item_id
         description: Unique id for each record.
         tests:
           - unique
           - not_null
+        meta:
+          dimension:
+            type: string
       - name: opportunity_line_item_name
-        description: '{{ doc("opportunity_line_item_name") }}'
+        description: "{{ doc(\"opportunity_line_item_name\") }}"
+        meta:
+          dimension:
+            type: string
       - name: opportunity_line_item_description
-        description: '{{ doc("opportunity_line_item_description") }}'
+        description: "{{ doc(\"opportunity_line_item_description\") }}"
+        meta:
+          dimension:
+            type: string
       - name: opportunity_id
-        description: '{{ doc("opportunity_id") }}'
+        description: "{{ doc(\"opportunity_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: line_item_index
-        description: '{{ doc("line_item_index") }}'
+        description: "{{ doc(\"line_item_index\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_line_items
-        description: '{{ doc("total_line_items") }}'
+        description: "{{ doc(\"total_line_items\") }}"
+        meta:
+          dimension:
+            type: number
       - name: created_date
-        description: '{{ doc("created_date") }}'
+        description: "{{ doc(\"created_date\") }}"
+        meta:
+          dimension:
+            type: timestamp
       - name: last_modified_date
-        description: '{{ doc("last_modified_date") }}'
+        description: "{{ doc(\"last_modified_date\") }}"
+        meta:
+          dimension:
+            type: timestamp
       - name: service_date
-        description: '{{ doc("service_date") }}'
+        description: "{{ doc(\"service_date\") }}"
+        meta:
+          dimension:
+            type: timestamp
       - name: pricebook_entry_id
-        description: '{{ doc("pricebook_entry_id") }}'
+        description: "{{ doc(\"pricebook_entry_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_2_id
-        description: '{{ doc("product_2_id") }}'
+        description: "{{ doc(\"product_2_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_2_name
-        description: '{{ doc("product_2_name") }}'
+        description: "{{ doc(\"product_2_name\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_code
-        description: '{{ doc("product_code") }}'
+        description: "{{ doc(\"product_code\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_2_description
-        description: '{{ doc("product_2_description") }}'
+        description: "{{ doc(\"product_2_description\") }}"
+        meta:
+          dimension:
+            type: string
       - name: list_price
-        description: '{{ doc("list_price") }}'
+        description: "{{ doc(\"list_price\") }}"
+        meta:
+          dimension:
+            type: number
       - name: quantity
-        description: '{{ doc("quantity") }}'
+        description: "{{ doc(\"quantity\") }}"
+        meta:
+          dimension:
+            type: number
       - name: unit_price
-        description: '{{ doc("unit_price") }}'
+        description: "{{ doc(\"unit_price\") }}"
+        meta:
+          dimension:
+            type: number
       - name: total_price
-        description: '{{ doc("total_price") }}'
+        description: "{{ doc(\"total_price\") }}"
+        meta:
+          dimension:
+            type: number
       - name: has_quantity_schedule
-        description: '{{ doc("has_quantity_schedule") }}'
+        description: "{{ doc(\"has_quantity_schedule\") }}"
+        meta:
+          dimension:
+            type: boolean
       - name: has_revenue_schedule
-        description: '{{ doc("has_revenue_schedule") }}'
+        description: "{{ doc(\"has_revenue_schedule\") }}"
+        meta:
+          dimension:
+            type: boolean
       - name: product_external_id
-        description: '{{ doc("product_external_id") }}'
+        description: "{{ doc(\"product_external_id\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_family
-        description: '{{ doc("product_family") }}'
+        description: "{{ doc(\"product_family\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_is_active
-        description: '{{ doc("product_is_active") }}'
+        description: "{{ doc(\"product_is_active\") }}"
+        meta:
+          dimension:
+            type: boolean
       - name: product_is_archived
-        description: '{{ doc("product_is_archived") }}'
+        description: "{{ doc(\"product_is_archived\") }}"
+        meta:
+          dimension:
+            type: boolean
       - name: product_is_deleted
-        description: '{{ doc("product_is_deleted") }}'
+        description: "{{ doc(\"product_is_deleted\") }}"
+        meta:
+          dimension:
+            type: boolean
       - name: product_number_of_quantity_installments
-        description: '{{ doc("product_number_of_quantity_installments") }}'
+        description: "{{ doc(\"product_number_of_quantity_installments\") }}"
+        meta:
+          dimension:
+            type: number
       - name: product_quantity_installment_period
-        description: '{{ doc("product_quantity_installment_period") }}'
+        description: "{{ doc(\"product_quantity_installment_period\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_quantity_schedule_type
-        description: '{{ doc("product_quantity_schedule_type") }}'
+        description: "{{ doc(\"product_quantity_schedule_type\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_quantity_unit_of_measure
-        description: '{{ doc("product_quantity_unit_of_measure") }}'
+        description: "{{ doc(\"product_quantity_unit_of_measure\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_number_of_revenue_installments
-        description: '{{ doc("product_number_of_revenue_installments") }}'
+        description: "{{ doc(\"product_number_of_revenue_installments\") }}"
+        meta:
+          dimension:
+            type: number
       - name: product_revenue_installment_period
-        description: '{{ doc("product_revenue_installment_period") }}'
+        description: "{{ doc(\"product_revenue_installment_period\") }}"
+        meta:
+          dimension:
+            type: string
       - name: product_revenue_schedule_type
-        description: '{{ doc("product_revenue_schedule_type") }}'
+        description: "{{ doc(\"product_revenue_schedule_type\") }}"
+        meta:
+          dimension:
+            type: string
