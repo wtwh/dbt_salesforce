@@ -462,6 +462,7 @@ models:
             total_sales_amount:
               type: sum
               label: Total Sales Amount
+              format: 'usd'
 
       - name: campaign_id
         description: >-
