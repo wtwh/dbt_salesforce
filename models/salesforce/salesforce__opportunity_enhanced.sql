@@ -36,9 +36,7 @@ add_fields as (
         account.number_of_employees,
         account.type as account_type,
         account.account_id as sf_account_id,
-        account.account_source as account_source,
-        account.vertical_c as vertical,
-        
+         
         opportunity_owner.user_id as opportunity_owner_id,
         opportunity_owner.user_name as opportunity_owner_name,
         opportunity_owner.user_role_id as opportunity_owner_role_id,

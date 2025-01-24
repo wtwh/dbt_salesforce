@@ -504,16 +504,6 @@ models:
             type: string
 
 
-      - name: account_source
-        meta:
-          dimension:
-            type: string
-
-      - name: vertical
-        meta:
-          dimension:
-            type: string
-
       - name: opportunity_id
         description: The unique, system-generated ID assigned during creation.
         tests:
