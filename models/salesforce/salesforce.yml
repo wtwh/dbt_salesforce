@@ -394,12 +394,14 @@ models:
           dimension:
             type: number
 
-  - name: netsuite_combined_view
+  - name: salesforce__netsuite_combined_view
     config:
       tags:
         - lightdash
-    description: >-
+    
+    description: >
       Netsuite combined view
+
     columns:
       - name: sf_account_id
         description: The unique, system-generated ID assigned during creation.
@@ -434,11 +436,11 @@ models:
             ${salesforce__opportunity_enhanced.opportunity_id} = ${salesforce__opportunity_line_item_enhanced.opportunity_id}
 
       joins:
-        - join: netsuite_combined_view
+        - join: salesforce__netsuite_combined_view
           type: left
           sql_on: |
-            ${salesforce__opportunity_enhanced.account_id} = ${netsuite_combined_view.sf_account_id}
-            and ${netsuite_combined_view.Close_Date_Month} = ${salesforce__opportunity_enhanced.close_date_month}
+            ${salesforce__opportunity_enhanced.account_id} = ${salesforce__netsuite_combined_view.sf_account_id}
+            and DATE_TRUNC(${salesforce__netsuite_combined_view.Close_Date}, MONTH) = DATE_TRUNC(${salesforce__opportunity_enhanced.close_date}, MONTH)
 
     columns:
 
