@@ -503,10 +503,6 @@ models:
           dimension:
             type: string
 
-      - name: industry
-        meta:
-          dimension:
-            type: string
 
       - name: account_source
         meta:
