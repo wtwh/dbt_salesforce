@@ -425,29 +425,29 @@ models:
             type: string
 
       - name: RevRecStartDate
-            meta:
-              dimension:
-                type: timestamp
+          meta:
+            dimension:
+              type: timestamp
 
       - name: RevRecEndDate
-            meta:
-              dimension:
-                type: timestamp
+          meta:
+            dimension:
+              type: timestamp
 
       - name: CommissionsFlag
-        meta:
-          dimension:
-            type: string
+          meta:
+            dimension:
+              type: string
 
       - name: Tower
-            meta:
-              dimension:
-                type: string
+          meta:
+            dimension:
+              type: string
 
       - name: Customer
-            meta:
-              dimension:
-                type: string
+          meta:
+            dimension:
+              type: string
 
       - name: closedate
         description: Required. Date when the opportunity is expected to close.
