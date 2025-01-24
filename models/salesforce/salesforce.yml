@@ -409,7 +409,7 @@ models:
           dimension:
             type: string
 
-      - name: close_date_month
+      - name: close_date
         description: Required. Date when the opportunity is expected to close.
         meta:
           dimension:
