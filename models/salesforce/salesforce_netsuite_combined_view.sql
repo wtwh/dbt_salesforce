@@ -1,0 +1,1 @@
+select * from `netsuite.netsuite_combined_view`

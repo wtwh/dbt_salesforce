@@ -394,6 +394,23 @@ models:
           dimension:
             type: number
 
+  - name: netsuite_combined_view
+    config:
+      tags:
+        - lightdash
+    
+    columns:
+      - name: sf_account_id
+        description: The unique, system-generated ID assigned during creation.
+        meta:
+          dimension:
+            type: string
+
+      - name: close_date_month
+        description: Required. Date when the opportunity is expected to close.
+        meta:
+          dimension:
+            type: timestamp
 
   - name: salesforce__opportunity_enhanced
     
@@ -415,7 +432,22 @@ models:
           sql_on: |
             ${salesforce__opportunity_enhanced.opportunity_id} = ${salesforce__opportunity_line_item_enhanced.opportunity_id}
 
+      joins:
+        - join: netsuite_combined_view
+          type: left
+          sql_on: |
+            ${salesforce__opportunity_enhanced.account_id} = ${netsuite_combined_view.sf_account_id}
+            and ${netsuite_combined_view.Close_Date_Month} = ${salesforce__opportunity_enhanced.close_date_month}
+
     columns:
+
+      - name: account_id
+        description: The unique, system-generated ID assigned during creation.
+        meta:
+          dimension:
+            type: string
+
+
       - name: opportunity_id
         description: The unique, system-generated ID assigned during creation.
         tests:
