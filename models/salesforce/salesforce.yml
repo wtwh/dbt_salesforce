@@ -398,7 +398,8 @@ models:
     config:
       tags:
         - lightdash
-    
+    description: >-
+      Netsuite combined view
     columns:
       - name: sf_account_id
         description: The unique, system-generated ID assigned during creation.
