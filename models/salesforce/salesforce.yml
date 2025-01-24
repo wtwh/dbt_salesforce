@@ -440,7 +440,7 @@ models:
           type: left
           sql_on: |
             ${salesforce__opportunity_enhanced.account_id} = ${salesforce__netsuite_combined_view.sf_account_id}
-            and cast(DATE_TRUNC(${salesforce__netsuite_combined_view.closedate}, MONTH) as date) = cast(DATE_TRUNC(${salesforce__opportunity_enhanced.close_date}, MONTH) as date)
+            and DATE_SUB(cast(DATE_TRUNC(${salesforce__netsuite_combined_view.closedate}, MONTH) as date), INTERVAL 1 year) = cast(DATE_TRUNC(${salesforce__opportunity_enhanced.close_date}, MONTH) as date)
 
     columns:
 
