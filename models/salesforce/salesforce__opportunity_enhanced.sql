@@ -36,7 +36,6 @@ add_fields as (
         account.number_of_employees,
         account.type as account_type,
         account.account_id as sf_account_id,
-        account.industry as industry,
         account.account_source as account_source,
         account.vertical_c as vertical,
         
@@ -100,3 +99,4 @@ add_fields as (
 
 select *
 from add_fields
+
