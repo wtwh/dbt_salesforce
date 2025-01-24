@@ -409,11 +409,65 @@ models:
           dimension:
             type: string
 
+      - name: SalesRep
+        meta:
+          dimension:
+            type: string
+
+      - name: BrandVertical
+        meta:
+          dimension:
+            type: string
+
+      - name: Quantity
+        meta:
+          dimension:
+            type: string
+
+      - name: RevRecStartDate
+            meta:
+              dimension:
+                type: timestamp
+
+      - name: RevRecEndDate
+            meta:
+              dimension:
+                type: timestamp
+
+      - name: CommissionsFlag
+        meta:
+          dimension:
+            type: string
+
+      - name: Tower
+            meta:
+              dimension:
+                type: string
+
+      - name: Customer
+            meta:
+              dimension:
+                type: string
+
       - name: closedate
         description: Required. Date when the opportunity is expected to close.
         meta:
           dimension:
             type: timestamp
+
+      - name: AmountRecognized
+          description: >-
+            Estimated total sale amount. For opportunities with products, the
+            amount is the sum of the related products.
+          meta:
+            dimension:
+              type: number
+
+            metrics:
+              total_AmountRecognized:
+                type: sum
+                label: Netsuite Total Sales Amount
+                format: 'usd'
 
   - name: salesforce__opportunity_enhanced
     
