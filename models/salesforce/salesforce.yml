@@ -409,7 +409,7 @@ models:
           dimension:
             type: string
 
-      - name: close_date
+      - name: closedate
         description: Required. Date when the opportunity is expected to close.
         meta:
           dimension:
@@ -440,7 +440,7 @@ models:
           type: left
           sql_on: |
             ${salesforce__opportunity_enhanced.account_id} = ${salesforce__netsuite_combined_view.sf_account_id}
-            and DATE_TRUNC(${salesforce__netsuite_combined_view.close_date}, MONTH) = DATE_TRUNC(${salesforce__opportunity_enhanced.close_date}, MONTH)
+            and DATE_TRUNC(${salesforce__netsuite_combined_view.closedate}, MONTH) = DATE_TRUNC(${salesforce__opportunity_enhanced.close_date}, MONTH)
 
     columns:
 
